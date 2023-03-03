@@ -1,0 +1,5 @@
+startup_message off
+vbell on
+vbell_msg "   Wuff  ----  Wuff!!  "
+termcapinfo xterm-256color|xterm|xterms|xs|rxvt ti@:te@
+deflogin off

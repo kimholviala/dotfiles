@@ -1,0 +1,5 @@
+[user]
+	name = Kim Holviala
+	email = kim@holviala.com
+[pull]
+	rebase = false
