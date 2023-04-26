@@ -18,13 +18,6 @@ PROMPT_COMMAND='printf "\\%$((COLUMNS-1))s\\r\033]2;Terminal\a\eP\e[?12h\e\\"'
 unset HISTFILE
 rm -f ~/.bash_history
 
-# Debian fixes
-if test -f /etc/debian_version; then
-
-	# Fix vi
-	[ -x /usr/bin/vim.tiny ] && alias vi=vim.tiny
-fi
-
 # macOS fixes
 if uname -s | grep -q Darwin; then
 
@@ -33,10 +26,9 @@ if uname -s | grep -q Darwin; then
 
 	# Fix md5sum
 	[ -x /sbin/md5 ] && alias md5sum=md5
-fi
 
 # WSL fixes
-if uname -r | grep -q Microsoft; then
+elif uname -r | grep -q Microsoft; then
 
 	# Assume local X11 server
 	export DISPLAY=:0.0
@@ -54,5 +46,14 @@ if uname -r | grep -q Microsoft; then
 
 	# Change to $HOME
 	cd
+
+# Debian fixes
+elif test -f /etc/debian_version; then
+
+	# Fix TERM
+	export TERM=xterm
+
+	# Fix vi
+	[ -x /usr/bin/vim.tiny ] && alias vi=vim.tiny
 fi
 
