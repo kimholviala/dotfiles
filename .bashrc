@@ -50,9 +50,6 @@ elif uname -r | grep -q Microsoft; then
 # Debian fixes
 elif test -f /etc/debian_version; then
 
-	# Fix TERM
-	export TERM=xterm-mono
-
 	# Fix vi
 	[ -x /usr/bin/vim.tiny ] && alias vi=vim.tiny
 fi
