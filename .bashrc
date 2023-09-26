@@ -10,6 +10,7 @@ alias ls="ls -v"
 alias ssh="ssh -A"
 alias bc="bc -lq"
 alias ipcalc="ipcalc -n"
+alias pine="alpine"
 
 # Place prompt at start of new line, force xterm title & cursor blink
 PROMPT_COMMAND='printf "\\%$((COLUMNS-1))s\\r\033]2;Terminal\a\eP\e[?12h\e\\"'
