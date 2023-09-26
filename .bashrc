@@ -18,8 +18,27 @@ PROMPT_COMMAND='printf "\\%$((COLUMNS-1))s\\r\033]2;Terminal\a\eP\e[?12h\e\\"'
 unset HISTFILE
 rm -f ~/.bash_history
 
+# iPad/iSH fixes
+if uname -v | grep -q "SUPER AWESOME"; then
+
+	# Fix shell
+	export PS1='[\u@ipad \W]\$ '
+	alias ls="ls -v --color=never"
+	alias host="nslookup"
+
+	# Start ssh-agent
+	export SSH_AGENT_ENV=~/.ssh/ssh-agent.env
+	pgrep ssh-agent >/dev/null || ssh-agent -s > $SSH_AGENT_ENV
+	. $SSH_AGENT_ENV >/dev/null
+
+	# Fix DNS resolution
+	if ! nslookup holviala.com >/dev/null 2>&1; then
+		echo "Using Google for DNS"
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+	fi
+
 # macOS fixes
-if uname -s | grep -q Darwin; then
+elif uname -s | grep -q Darwin; then
 
 	# Disable macOS zsh warning
 	export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -34,7 +53,7 @@ elif uname -r | grep -q Microsoft; then
 	export DISPLAY=:0.0
 	export LIBGL_ALWAYS_INDIRECT=1
 
-	# Fix ssh-agent
+	# Start ssh-agent
 	export SSH_AGENT_ENV=~/.ssh/ssh-agent.env
 	pgrep -U $UID ssh-agent >/dev/null || ssh-agent -s > $SSH_AGENT_ENV
 	. $SSH_AGENT_ENV >/dev/null
