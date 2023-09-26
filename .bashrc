@@ -10,6 +10,7 @@ alias ls="ls -v"
 alias ssh="ssh -A"
 alias bc="bc -lq"
 alias ipcalc="ipcalc -n"
+alias date="LANG=C date"
 alias pine="alpine"
 
 # Place prompt at start of new line, force xterm title & cursor blink
