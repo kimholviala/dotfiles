@@ -24,7 +24,7 @@ rm -f ~/.bash_history
 if uname -v | grep -q "SUPER AWESOME"; then
 
 	# Fix shell
-	export PS1='[\u@ipad \W]\$ '
+	export PS1='[kim@ipad \W]\$ '
 	alias ls="ls -v --color=never"
 	alias host="nslookup"
 
