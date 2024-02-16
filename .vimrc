@@ -1,5 +1,5 @@
 " Colors suck
-" syntax off
+syntax off
 
 " Swapfiles suck
 set noswapfile
