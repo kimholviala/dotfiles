@@ -5,6 +5,9 @@ export PAGER=less
 export EDITOR=vi
 export MAIL=/var/mail/$USER
 
+# Fix $TERM for screen
+[ "$TERM" == "screen.xterm-256color" ] && export TERM=screen
+
 # Useful aliases
 alias ls="ls -v"
 alias ssh="ssh -A"
