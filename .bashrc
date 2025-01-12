@@ -31,6 +31,9 @@ if uname -v | grep -q "SUPER AWESOME"; then
 	alias ls="ls -v --color=never"
 	alias host="nslookup"
 
+	# Keep running in the background
+	cat /dev/location >/dev/null &
+
 	# Start ssh-agent
 	export SSH_AGENT_ENV=~/.ssh/ssh-agent.env
 	pgrep ssh-agent >/dev/null || ssh-agent -s > $SSH_AGENT_ENV
@@ -42,7 +45,7 @@ if uname -v | grep -q "SUPER AWESOME"; then
 	screen -wipe >/dev/null
 
 	# Fix DNS resolution
-	if ! nslookup holviala.com >/dev/null 2>&1; then
+	if ! nslookup google.com >/dev/null 2>&1; then
 		echo "[Using Google for DNS]"
 		echo "nameserver 8.8.8.8" > /etc/resolv.conf
 	fi
